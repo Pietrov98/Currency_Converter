@@ -1,4 +1,4 @@
-package Converter_package;
+package Repository_package;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,16 +15,19 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import Currency_package.Currency;
+
 public abstract class NBPConverter {
 	
-	public static Repository remoteRepository() throws SAXException, IOException, ParserConfigurationException
+	public static Repository remoteRepository(File xmlFile) throws SAXException, IOException, ParserConfigurationException //jeszcze ma przyjac byte
 	{
 		List<Currency> currencyList = new ArrayList<Currency>();
 		currencyList.add(new Currency("zloty polski", 1, "PLN", 1));
-		File xmlFIle = new File("src/Converter_package/LastA.xml");
+		//File xmlFIle = new File("src/Converter_package/LastA.xml");
+		//File xmlFile = ParseXml.parse();
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		Document document = documentBuilder.parse(xmlFIle);
+		Document document = documentBuilder.parse(xmlFile);
 		NodeList list = document.getElementsByTagName("pozycja");
 		for(int i = 0; i < list.getLength(); i++)
 		{

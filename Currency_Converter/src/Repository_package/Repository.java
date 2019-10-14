@@ -1,6 +1,8 @@
-package Converter_package;
+package Repository_package;
 
 import java.util.List;
+
+import Currency_package.Currency;
 
 public class Repository {
 	private List<Currency> currencyList;

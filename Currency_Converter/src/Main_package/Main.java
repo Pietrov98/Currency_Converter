@@ -1,4 +1,4 @@
-package Converter_package;
+package Main_package;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -6,6 +6,8 @@ import java.util.Scanner;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
+import DataProvider_package.NBPDataProvider;
 
 public class Main {
 	
@@ -17,7 +19,7 @@ public class Main {
 		//Currency obj = new Currency("2", 1, "3", 2.5);
 		//System.out.println(obj.getName());
 		//String url = "https://www.nbp.pl/kursy/xml/LastA.xml"
-		while(true)
+		/*while(true)
 		{
 			int choice = Menu.printMenu();
 			//System.out.println(choice);
@@ -25,7 +27,7 @@ public class Main {
 			{
 				System.exit(0);
 			}
-			Repository r = NBPConverter.remoteRepository();
+			//Repository r = NBPConverter.remoteRepository();
 			if(choice == 2)
 			{
 				System.out.println("Podaj kod waluty, ktora chcesz sprawdzic");
@@ -51,8 +53,9 @@ public class Main {
 				String code2 = in.next().toUpperCase();
 				UserCalc.uCalc(code1, code2, r);
 			}
-		}
-	
+		}*/
+		NBPDataProvider dataProvider = new NBPDataProvider();
+		dataProvider.RequireRemoteData();
 		
 	}
 }

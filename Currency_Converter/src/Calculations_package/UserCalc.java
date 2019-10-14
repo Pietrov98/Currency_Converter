@@ -1,6 +1,7 @@
-package Converter_package;
+package Calculations_package;
 
-import java.util.Scanner;
+import Currency_package.Currency;
+import Repository_package.Repository;
 
 public abstract class UserCalc {
 	public static void uCalc(String c1, String c2, Repository r)
@@ -18,7 +19,7 @@ public abstract class UserCalc {
 		}
 	}
 	
-	public static void printArgs(Repository r)
+	public static void printArgs()
 	{
 		
 	}

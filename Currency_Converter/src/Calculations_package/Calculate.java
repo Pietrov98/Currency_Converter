@@ -1,6 +1,8 @@
-package Converter_package;
+package Calculations_package;
 
 import java.util.Scanner;
+
+import Currency_package.Currency;
 
 public class Calculate {
 	private Currency currency1;
@@ -26,6 +28,6 @@ public class Calculate {
 
 		value = currency1.getAverageRate() * value * currency1.getConverter() / (currency2.getAverageRate() * currency2.getConverter());
 		setValue(value);
-		return value; //zwraca przeliczony wynik?
+		return this.value; //zwraca przeliczony wynik?
 	}
 }

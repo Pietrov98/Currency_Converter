@@ -1,6 +1,9 @@
-package Converter_package;
+package UI_package;
 
 import java.util.List;
+
+import Currency_package.Currency;
+import Repository_package.Repository;
 
 public abstract class PrintCurrencyList {
 

@@ -1,4 +1,4 @@
-package Converter_package;
+package Currency_package;
 
 public class Currency {
 	private String name;
