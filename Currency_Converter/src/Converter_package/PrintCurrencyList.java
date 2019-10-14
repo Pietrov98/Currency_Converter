@@ -8,7 +8,7 @@ public abstract class PrintCurrencyList {
 	{
 		List<Currency> currencyList = r.getCurrencyList();
 		for(int i = 0; i < currencyList.size(); i++) {
-            System.out.println(currencyList.get(i).getName());
+            System.out.println(currencyList.get(i).getName() + " <" + currencyList.get(i).getCode() + "> " + currencyList.get(i).getAverageRate());
         }
 	}
 }

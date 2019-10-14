@@ -1,5 +1,7 @@
 package Converter_package;
 
+import java.util.Scanner;
+
 public class Calculate {
 	private Currency currency1;
 	private Currency currency2;
@@ -18,6 +20,12 @@ public class Calculate {
 
 	public double calc(Currency currency1, Currency currency2)
 	{
-		return 0; //zwraca przeliczony wynik?
+		System.out.println("Podaj kwote, ktora chcesz wymienic");
+		Scanner in = new Scanner(System.in);
+		double value = in.nextDouble();
+
+		value = currency1.getAverageRate() * value * currency1.getConverter() / (currency2.getAverageRate() * currency2.getConverter());
+		setValue(value);
+		return value; //zwraca przeliczony wynik?
 	}
 }

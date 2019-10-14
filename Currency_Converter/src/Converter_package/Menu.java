@@ -8,7 +8,8 @@ public abstract class Menu {
 	{
 		System.out.println("0. Use Converter");
 		System.out.println("1. Print Courses");
-		System.out.println("2. Exit");
+		System.out.println("2. Find course by code");
+		System.out.println("3. Exit");
 		Scanner in = new Scanner(System.in);
 		int choice = in.nextInt();
 		return choice;
