@@ -1,7 +1,7 @@
 package Repository_package;
-
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +19,17 @@ import Currency_package.Currency;
 
 public abstract class NBPConverter {
 	
-	public static Repository remoteRepository(File xmlFile) throws SAXException, IOException, ParserConfigurationException //jeszcze ma przyjac byte
+	public static Repository remoteRepository(byte[] tab, File xmlFile) throws SAXException, IOException, ParserConfigurationException //jeszcze ma przyjac byte
 	{
 		List<Currency> currencyList = new ArrayList<Currency>();
 		currencyList.add(new Currency("zloty polski", 1, "PLN", 1));
-		//File xmlFIle = new File("src/Converter_package/LastA.xml");
-		//File xmlFile = ParseXml.parse();
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		URL url = new URL ("https://www.nbp.pl/kursy/xml/LastA.xml");
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(url.openStream());
+	   /*DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		Document document = documentBuilder.parse(xmlFile);
+		Document document = documentBuilder.parse(xmlFile);*/
 		NodeList list = document.getElementsByTagName("pozycja");
 		for(int i = 0; i < list.getLength(); i++)
 		{
@@ -35,18 +37,10 @@ public abstract class NBPConverter {
 			if(node.getNodeType() == Node.ELEMENT_NODE)
 			{
 				Element element = (Element) node;
-				//System.out.println("id " + element.getElementsByTagName("nazwa_waluty").item(0).getTextContent());
-				//System.out.println("kod " + element.getElementsByTagName("kod_waluty").item(0).getTextContent());
-				//System.out.println("prz " + element.getElementsByTagName("przelicznik").item(0).getTextContent());
-				//System.out.println("kurs " + element.getElementsByTagName("kurs_sredni").item(0).getTextContent());
 				String name = element.getElementsByTagName("nazwa_waluty").item(0).getTextContent();
-				//System.out.println(name);
 				int converter = Integer.parseInt(element.getElementsByTagName("przelicznik").item(0).getTextContent());
-				//System.out.println(converter);
 				String code = element.getElementsByTagName("kod_waluty").item(0).getTextContent();
-				//System.out.println(code);
 				double average_course = Double.parseDouble(element.getElementsByTagName("kurs_sredni").item(0).getTextContent().replace(",", "."));
-				//System.out.println(average_course);
 				currencyList.add(new Currency(name, converter, code, average_course));
 
 			}

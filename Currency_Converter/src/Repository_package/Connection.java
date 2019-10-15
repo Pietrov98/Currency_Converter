@@ -1,9 +1,10 @@
 package Repository_package;
 
 public abstract class Connection {
-	public static byte[] getResource() //(url:string)
+	public static byte[] getResource(String url) //(url:string)
 	{
-		return null;
+		byte[] tab = url.getBytes();
+		return tab;
 		
 	}
 }
